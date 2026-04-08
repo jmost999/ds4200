@@ -31,23 +31,29 @@ long_df = result.melt(id_vars="party", var_name="question", value_name="mean_sco
 
 chart_type = alt.param(
     name="ChartType",
-    bind=alt.binding_radio(options=["Line Chart", "Grouped Bar"], name="Select Chart Type: "),
-    value="Line Chart"
+    bind=alt.binding_radio(options=["Grouped Bar","Line Chart"], name="Select Chart Type: "),
+    value="Grouped Bar"
 )
 
 line_parties = alt.Chart(long_df).mark_line(point=True).encode(
     x=alt.X("question:N"),
     y="mean_score:Q",
-    color="party:N"
+    color=alt.Color("party:N", scale=alt.Scale(
+    domain=["Republican", "Democrat", "Independent", "Other", "None"],
+    range=["Red", "Blue", "Green", "Yellow", "Black"]),legend=alt.Legend(title="Party by Color"))
 ).properties(width=1100, height=600, title = "Line chart- How important is it too... (1 being very important)").transform_filter(
     chart_type == "Line Chart"
 )
 
-bar_plot = alt.Chart(long_df).mark_bar(point=True).encode(
-    x=alt.X("question:N"),
+bar_plot = alt.Chart(long_df).mark_bar().encode(
+    x=alt.X("question:N", axis=alt.Axis(labelAngle=-30),
+            scale=alt.Scale(paddingInner=0.4)),  # space between groups (0–1)
     y="mean_score:Q",
-    color="party:N",
-    xOffset="party:N"
+    color=alt.Color("party:N", scale=alt.Scale(
+    domain=["Republican", "Democrat", "Independent", "Other", "None"],
+    range=["Red", "Blue", "Green", "Yellow", "Black"]),legend=alt.Legend(title="Party by Color")),
+    xOffset=alt.XOffset("party:N", scale=alt.Scale(paddingInner=0.1))
+
 ).properties(width=1100, height=600, title = "Line chart- How important is it too... (1 being very important)").transform_filter(
     chart_type == "Grouped Bar"
 )
