@@ -23,7 +23,7 @@ cols = ["Q2_1","Q2_2","Q2_3","Q2_4","Q2_5",
         "Q2_6","Q2_7","Q2_8","Q2_9","Q2_10"]
 
 result = df.groupby("Q30")[cols].mean().reset_index()
-result.columns = ["party","vote","be jury","follow the news","display a flag","participate in the census",
+result.columns = ["party","vote","be in a jury","follow the news","display a flag","participate in the census",
                   "know the pledge","support the military","respect disagreements","believe in god","protest"]
 
 result["party"] = unique_choices
@@ -44,7 +44,7 @@ line_parties = alt.Chart(long_df).mark_line(point=True).encode(
     tooltip = [alt.Tooltip('mean_score:Q', title='Mean Score:', format='.2f'),
                 alt.Tooltip('party:N', title='Political Party:')]
 
-).properties(width=1800, height=600, title = "Line chart- How important is it too... (1 being very important)").transform_filter(
+).properties(width=1000, height=600, title = "Line chart- How important is it to... (1 being very important)").transform_filter(
     chart_type == "Line Chart"
 )
 
@@ -60,7 +60,7 @@ bar_plot = alt.Chart(long_df).mark_bar().encode(
              alt.Tooltip('party:N', title='Political Party:')]
 
 
-).properties(width=1800, height=600, title = "Line chart- How important is it too... (1 being very important)").transform_filter(
+).properties(width=1000, height=600, title = "Line chart- How important is it to... (1 being very important)").transform_filter(
     chart_type == "Grouped Bar"
 )
 
