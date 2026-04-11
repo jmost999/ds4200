@@ -53,7 +53,7 @@ chart = (
     )
     .transform_filter("datum.party_label === party")
     .add_params(party_param)
-    .properties(width=460, height=300, title="Ease of Voting vs. Voter Frequency")
+    .properties(width=800, height=700, title="Ease of Voting vs. Voter Frequency")
 )
 
 chart.save("bubble_chart.html")

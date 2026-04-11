@@ -23,9 +23,7 @@ chart = alt.Chart(pie_df).mark_arc().encode(
     theta=alt.Theta("count:Q", stack=True),
     color=alt.Color("party:N", scale=alt.Scale(
     domain=["Republican", "Democrat", "Independent", "Other", "None"],
-    range=["Red", "Blue", "Green", "Yellow", "Black"]),legend=alt.Legend(title="Party by Color")),
-    tooltip=["party:N", "gender:N", "income:N", "count:Q"]
-
+    range=["Red", "Blue", "Green", "Yellow", "Black"]),legend=alt.Legend(title="Party by Color"))
 ).add_params(
     gender_param, income_param
 ).transform_filter("(gender_val === 'All') || (datum.gender === gender_val)"
