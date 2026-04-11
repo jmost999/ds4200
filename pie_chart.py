@@ -21,7 +21,9 @@ income_param = alt.param(bind=income_select, value="All", name="income_val")
 
 chart = alt.Chart(pie_df).mark_arc().encode(
     theta=alt.Theta("count:Q", stack=True),
-    color=alt.Color("party:N", legend=alt.Legend(title="Party")),
+    color=alt.Color("party:N", scale=alt.Scale(
+    domain=["Republican", "Democrat", "Independent", "Other", "None"],
+    range=["Red", "Blue", "Green", "Yellow", "Black"]),legend=alt.Legend(title="Party by Color")),
     tooltip=["party:N", "gender:N", "income:N", "count:Q"]
 
 ).add_params(
