@@ -44,7 +44,7 @@ line_parties = alt.Chart(long_df).mark_line(point=True).encode(
     tooltip = [alt.Tooltip('mean_score:Q', title='Mean Score:', format='.2f'),
                 alt.Tooltip('party:N', title='Political Party:')]
 
-).properties(width=1000, height=600, title = "Line chart- How important is it to... (1 being very important)").transform_filter(
+).properties(width=800, height=600, title = "Line chart- How important is it to... (1 being very important)").transform_filter(
     chart_type == "Line Chart"
 )
 
@@ -60,7 +60,7 @@ bar_plot = alt.Chart(long_df).mark_bar().encode(
              alt.Tooltip('party:N', title='Political Party:')]
 
 
-).properties(width=1000, height=600, title = "Line chart- How important is it to... (1 being very important)").transform_filter(
+).properties(width=800, height=600, title = "Line chart- How important is it to... (1 being very important)").transform_filter(
     chart_type == "Grouped Bar"
 )
 

@@ -22,11 +22,11 @@ if __name__ == "__main__":
                     labels=dict(x="Political Party", y="Question", color="Scale of 1-4"),
                     x=['Republican', 'Democrat', 'Independent','Other', 'None'],
                     y=['Trust President', 'Trust Congress', 'Trust Supreme Court','Trust Cdc', 'Trust Election Officials','Trust FBI','Trust News','Trust Police','Trust Usps'],
-                    color_continuous_scale = "reds_r"
+                    color_continuous_scale = "reds_r",
+                    title="Trust by Political Parties (lower values imply more trust)"
                    )
 
 
-    plt.title("Heat map of given question responses (lower values imply more trust)")
     fig.show()
     fig.write_html("heatmap.html")
 
