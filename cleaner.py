@@ -41,6 +41,7 @@ pd.set_option("display.max_colwidth", None)
 df_clean = df_clean.replace(-1, pd.NA)
 df_clean = df_clean.dropna()
 df_clean.to_csv('df_clean.csv', index=False)
+
 if __name__ == "__main__":
     print(len(df_clean))
     print(df_clean.isna().sum())

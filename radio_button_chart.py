@@ -40,8 +40,11 @@ line_parties = alt.Chart(long_df).mark_line(point=True).encode(
     y="mean_score:Q",
     color=alt.Color("party:N", scale=alt.Scale(
     domain=["Republican", "Democrat", "Independent", "Other", "None"],
-    range=["Red", "Blue", "Green", "Yellow", "Black"]),legend=alt.Legend(title="Party by Color"))
-).properties(width=1100, height=600, title = "Line chart- How important is it too... (1 being very important)").transform_filter(
+    range=["Red", "Blue", "Green", "Yellow", "Black"]),legend=alt.Legend(title="Party by Color")),
+    tooltip = [alt.Tooltip('mean_score:Q', title='Mean Score:', format='.2f'),
+                alt.Tooltip('party:N', title='Political Party:')]
+
+).properties(width=1800, height=600, title = "Line chart- How important is it too... (1 being very important)").transform_filter(
     chart_type == "Line Chart"
 )
 
@@ -52,9 +55,12 @@ bar_plot = alt.Chart(long_df).mark_bar().encode(
     color=alt.Color("party:N", scale=alt.Scale(
     domain=["Republican", "Democrat", "Independent", "Other", "None"],
     range=["Red", "Blue", "Green", "Yellow", "Black"]),legend=alt.Legend(title="Party by Color")),
-    xOffset=alt.XOffset("party:N", scale=alt.Scale(paddingInner=0.1))
+    xOffset=alt.XOffset("party:N", scale=alt.Scale(paddingInner=0.1)),
+    tooltip=[alt.Tooltip('mean_score:Q', title='Mean Score:', format='.2f'),
+             alt.Tooltip('party:N', title='Political Party:')]
 
-).properties(width=1100, height=600, title = "Line chart- How important is it too... (1 being very important)").transform_filter(
+
+).properties(width=1800, height=600, title = "Line chart- How important is it too... (1 being very important)").transform_filter(
     chart_type == "Grouped Bar"
 )
 
