@@ -127,7 +127,7 @@ Object.entries(questionMap).forEach(([key, label]) => {
     .text(label);
 });
 
-d3.csv("df_clean.csv_clean.csv", d3.autoType).then(data => {
+d3.csv("df_clean.csv", d3.autoType).then(data => {
   const filtered = data.filter(d => partyMap[d.Q30]);
 
   function buildChartData(questionKey) {
